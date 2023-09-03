@@ -8,8 +8,8 @@ const app = express();
 app.use(express.static('./public'));
 app.use(express.json());
 
-app.use(notFoundMiddleware);
-app.use(errorHandlerMiddleware);
+// app.use(notFoundMiddleware);
+// app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 
