@@ -7,7 +7,7 @@ const login = async (req, res) => {
 }
 
 
-module.exportgs = {
+module.exports = {
     register,
     login
 }
