@@ -16,8 +16,8 @@ const jobsRouter = require('./routes/jobs')
 app.use(express.static('./public'));
 app.use(express.json());
 
-app.use('domain/api/v1/auth', authRouter)
-app.use('domain/api/v1/login', jobsRouter)
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/login', jobsRouter)
 
 // app.use(notFoundMiddleware);
 // app.use(errorHandlerMiddleware);
