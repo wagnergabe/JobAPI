@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const {StatusCodes} = require('http-status-codes')
-const {BadRequestError, UnauthenticatedError} = require('../errors')
+ const { BadRequestError } = require('../errors')
+
 
 
 
@@ -24,6 +25,8 @@ const login = async (req, res) => {
         throw new UnauthenticatedError('Invalid Credentials')
     }
 
+    const token = user.createJWT();
+    res.status(StatusCodes.OK).json({user:{name:user.name}, token})
     
 }
 
