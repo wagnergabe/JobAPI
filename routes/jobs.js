@@ -5,7 +5,7 @@ const { getAllJobs,
     getJob,
     createJob,
     updateJob,
-    deleteJob } = require("../contollers/jobs");
+    deleteJob } = require("../controllers/jobs");
 
 
 router.route('/').post(createJob).get(getAllJobs)
