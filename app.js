@@ -6,6 +6,15 @@ const app = express();
 
 // connect DB
 const connectDB = require('./db/connect')
+const authenticateUser = require('./middleware/authentification')
+
+
+const notFoundMiddleware = require('./middleware/not-found')
+const errorHandlerMiddleware = require('./middleware/error-handler')
+
+// error handling
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 //routers
 
@@ -16,11 +25,12 @@ const jobsRouter = require('./routes/jobs')
 app.use(express.static('./public'));
 app.use(express.json());
 
-app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/login', jobsRouter)
 
-// app.use(notFoundMiddleware);
-// app.use(errorHandlerMiddleware);
+// routes
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/login', authenticateUser, jobsRouter)
+
+
 
 const port = process.env.PORT || 3000;
 
